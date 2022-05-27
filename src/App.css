@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
+  background-image: url('../public/bg-desk.jpg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  width: 32rem;
+  height: 40rem;
+  margin: 10rem;
   flex-direction: column;
-  align-items: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  background: url('../public/notepad.jpg')
+}
+
+h1{
+  display: flex;
+  font-family: fantasy;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ 
+}
+.todoinput{
+  background: transparent;
+  background: transparent;
+  /* border-bottom: 1px solid black; */
+  border-bottom-style: solid;
+  border-bottom: 1px solid black;
+  border-top-style: unset;
+  border-right-style: unset;
+  border-bottom-style: solid;
+  border-left-style: unset;
+  /* border-style: unset; */
+  border-color: black;
+  border-image: none;
+  color: black;
+  appearance: none;
 }
 
-.App-link {
-  color: #61dafb;
+li{
+ list-style-type: none;
+ margin: 0;
+ font-family: fantasy;
+ font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-check {
+  width:1rem;
+  height: 1rem;
+  background: transparent;
+  border: dotted 0.1rem black;
 }
+
+.btn-delete {
+  width:1rem;
+  height: 1rem;
+  background: transparent;
+  border: solid 0.1rem black;
+}
+
+.li-item {
+  display: flex;
+  border-bottom: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+
+}
+
+
