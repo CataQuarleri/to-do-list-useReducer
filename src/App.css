@@ -30,24 +30,32 @@ h1{
 .todoinput{
   background: transparent;
   background: transparent;
-  /* border-bottom: 1px solid black; */
   border-bottom-style: solid;
   border-bottom: 1px solid black;
   border-top-style: unset;
   border-right-style: unset;
   border-bottom-style: solid;
   border-left-style: unset;
-  /* border-style: unset; */
   border-color: black;
-  border-image: none;
   color: black;
   appearance: none;
+  align-self: center;
+  font-size: 1.5rem;
+  height: 2rem;
+  width: 20rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li{
  list-style-type: none;
  margin: 0;
+ padding: 0;
  font-family: fantasy;
+ font-weight: bold;
  font-size: 1.5rem;
 }
 
@@ -56,6 +64,7 @@ li{
   height: 1rem;
   background: transparent;
   border: dotted 0.1rem black;
+  text-align: center;
 }
 
 .btn-delete {
@@ -63,6 +72,7 @@ li{
   height: 1rem;
   background: transparent;
   border: solid 0.1rem black;
+  text-align: center;
 }
 
 .li-item {
@@ -71,6 +81,7 @@ li{
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
+  width: 20rem;
 }
 @media (prefers-reduced-motion: no-preference) {
 

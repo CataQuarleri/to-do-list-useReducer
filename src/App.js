@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react'
+import React, {useReducer, useState, useEffect, useRef } from 'react'
 import Todo from './components/Todo.js'
 import './App.css';
 
@@ -7,11 +7,12 @@ export const ACTIONS = {
   TOGGLE_CHECK:'toggleCheck',
   DELETE_TODO: 'deleteTodo'
 }
+
+const savedTodos = JSON.parse(localStorage.getItem('toDos'))
+
 function reducer(todos, action) {
   switch (action.type) {
     case ACTIONS.ADD_TODO: 
-    console.log("action", action)
-    console.log("todos", todos)
     return [...todos, newTodo(action.payload.name)];
     case ACTIONS.TOGGLE_CHECK: 
     return todos.map(todo => {
@@ -29,27 +30,37 @@ function reducer(todos, action) {
 function newTodo(name){
   return {id: Date.now(), name: name, complete: false}
 }
+
 function App() {
-  const [todos, dispatch] = useReducer(reducer, [])
-  const [name, setName] = useState('')
+  const [todos, dispatch] = useReducer(reducer, savedTodos || [])
+  // const [name, setName] = useState('')
+  const name = useRef("") 
+console.log("render")
+
+  useEffect(()=>{
+     localStorage.setItem('toDos', JSON.stringify(todos))
+     }, [todos])
 
   function handleSubmit(e){
     e.preventDefault()
-    dispatch({type: ACTIONS.ADD_TODO, payload: {name: name}})
-    setName('')
+    name.current = e.target[0]?.value
+    dispatch({type: ACTIONS.ADD_TODO, payload: {name: name.current}})
+    e.target[0].value = ""
   }
   return (
     <>
     <main className="container">
       <h1>TO DO LIST</h1>
+      <ul>
     {todos.map((todo)=>
       <Todo key={todo.id} todo={todo} dispatch={dispatch}/>
     )}
+      </ul>
     <form onSubmit={handleSubmit}>
-      <input 
+      <input ref={name}
       className="todoinput"
-      type="text" value={name} 
-      onChange={e => setName(e.target.value)}/>
+      type="text" 
+      />
     </form>
     </main>
     </>
